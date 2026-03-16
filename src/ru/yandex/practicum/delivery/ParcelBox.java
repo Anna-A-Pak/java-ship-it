@@ -23,13 +23,7 @@ public class ParcelBox <T extends Parcel> {
         }
     }
 
-    public void getAllParcels () {
-        if (!parcels.isEmpty()) {
-            for (T parcel : parcels) {
-                System.out.println(parcel.getDescription());
-            }
-        } else {
-            System.out.println("В коробке нет посылок!");
-        }
+    public ArrayList<T> getAllParcels () {
+        return parcels;
     }
 }

@@ -127,25 +127,34 @@ public class DeliveryApp {
         }
     }
 
-    private static void showContentBox() {
+    private static <T> void showContentBox() {
         System.out.println("Выберите тип коробки:");
         System.out.println("1 — Коробка стандартных посылок");
         System.out.println("2 — Коробка хрупких посылок");
         System.out.println("3 — Коробка скоропортящихся посылок");
         int choice = Integer.parseInt(scanner.nextLine());
+        ArrayList<? extends Parcel> parcels = new ArrayList<>();
 
         switch (choice) {
             case 1:
-                standardParcelsBox.getAllParcels();
+                parcels = standardParcelsBox.getAllParcels();
                 break;
             case 2:
-                fragileParcelsBox.getAllParcels();
+                parcels = fragileParcelsBox.getAllParcels();
                 break;
             case 3:
-                perishableParcelsBox.getAllParcels();
+                parcels = perishableParcelsBox.getAllParcels();
                 break;
             default:
                 System.out.println("Неверный выбор.");
+        }
+
+        if (!parcels.isEmpty()) {
+            for (Parcel parcel: parcels) {
+                System.out.println(parcel.getDescription());
+            }
+        } else {
+            System.out.println("В коробке нет посылок!");
         }
     }
 }

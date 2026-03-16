@@ -10,7 +10,7 @@ public class FragileParcel extends Parcel implements Trackable {
     @Override
     public void packageItem () {
         System.out.println("Посылка " + description + " обёрнута в пленку.");
-        System.out.println("Посылка " + description + " упакована.");
+        super.packageItem();
     }
 
     @Override
